@@ -16,8 +16,9 @@ body {
   width: 100%;
   min-height: 100vh;
   justify-content: center;
-  align-items: stretch; /* Força o filho (form-container) a esticar */
-  padding: 20px;
+  align-items: stretch;
+  /* Força o filho (form-container) a esticar */
+
   box-sizing: border-box;
 }
 
@@ -35,7 +36,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10001;
   transition: transform 0.2s ease-in-out;
 }
@@ -77,7 +78,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   animation: pulse 2s infinite;
-  box-shadow: 0 0 0 rgba(255,255,255, 0.4);
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
   transition: transform 0.3s ease;
 }
 
@@ -86,9 +87,17 @@ body {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255,255,255, 0.5); }
-  70% { box-shadow: 0 0 0 35px rgba(255,255,255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255,255,255, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 35px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
 }
 
 /* --- Tela de Seleção de Serviço --- */
@@ -167,12 +176,15 @@ label {
   padding-left: 8px;
 }
 
-input::placeholder,textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #777777;
   opacity: 1;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -183,7 +195,9 @@ input, select, textarea {
   box-shadow: 2px 2px 5px rgba(71, 35, 63, 0.2);
 }
 
-input:hover, select:hover, textarea:hover {
+input:hover,
+select:hover,
+textarea:hover {
   border: 1px solid #441044;
   cursor: pointer;
 }
@@ -256,7 +270,7 @@ input:hover, select:hover, textarea:hover {
   background-color: white;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 90%;
   max-width: 400px;
@@ -341,7 +355,5 @@ input:hover, select:hover, textarea:hover {
     box-sizing: border-box;
   }
 
-  #app {
-    padding-top: 20px;
-  }
+
 }
