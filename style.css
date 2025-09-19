@@ -7,17 +7,46 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
+  min-height: 100vh;
   max-width: 100%;
-
 }
 
 #app {
   display: none;
-  /* O container principal do app é oculto até um formulário ser selecionado */
+  width: 100%;
+  min-height: 100vh;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
 
+/* --- Botão de Instalação PWA --- */
+.install-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: #6d196d;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10001;
+  transition: transform 0.2s ease-in-out;
+}
+
+.install-btn:hover {
+  transform: scale(1.1);
+}
+
+.install-btn svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* --- Tela de Abertura (Splash Screen) --- */
@@ -48,7 +77,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   animation: pulse 2s infinite;
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 rgba(255,255,255, 0.4);
   transition: transform 0.3s ease;
 }
 
@@ -57,28 +86,18 @@ body {
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
-  }
-
-  70% {
-    box-shadow: 0 0 0 35px rgba(255, 255, 255, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-  }
+  0% { box-shadow: 0 0 0 0 rgba(255,255,255, 0.5); }
+  70% { box-shadow: 0 0 0 35px rgba(255,255,255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255, 0); }
 }
 
 /* --- Tela de Seleção de Serviço --- */
 #selection-screen {
   display: none;
-  /* Começa oculto */
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-
   color: #3b1447;
 }
 
@@ -102,25 +121,20 @@ body {
   cursor: pointer;
   border: none;
   background-color: #6d196d;
-  /* Roxo */
   color: #ffffff;
-  /* Branco */
   border-radius: 10px;
   transition: background-color 0.3s;
 }
 
 .selection-buttons button:hover {
   background-color: #3b1447;
-  /* Roxo mais escuro */
 }
 
 .selection-buttons .icon {
   stroke: currentColor;
-  /* Usa a cor do texto do botão (branco) */
   width: 24px;
   height: 24px;
 }
-
 
 /* --- Estilos de Formulário (Comuns a ambos os formulários) --- */
 .form-container {
@@ -128,6 +142,7 @@ body {
   max-width: 100%;
   width: 400px;
   padding: 20px;
+  border-radius: 10px;
   box-shadow: 2px 2px 5px rgba(71, 35, 63, 0.2);
   border-left: 5px solid #470b5f;
 }
@@ -146,16 +161,12 @@ label {
   padding-left: 8px;
 }
 
-input::placeholder,
-textarea::placeholder,
-option::placeholder {
+input::placeholder,textarea::placeholder {
   color: #777777;
   opacity: 1;
 }
 
-input,
-select,
-textarea {
+input, select, textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -166,9 +177,7 @@ textarea {
   box-shadow: 2px 2px 5px rgba(71, 35, 63, 0.2);
 }
 
-input:hover,
-select:hover,
-textarea:hover {
+input:hover, select:hover, textarea:hover {
   border: 1px solid #441044;
   cursor: pointer;
 }
@@ -179,89 +188,6 @@ textarea:hover {
   font-weight: bold;
   color: rgb(71, 16, 71);
   margin-bottom: 25px;
-}
-
-.titulo-alertaSC {
-  text-align: center;
-  font-size: 10px;
-  font-weight: bold;
-  color: rgb(113, 73, 189);
-  margin-bottom: 15px;
-}
-
-.flex-row {
-  display: flex;
-  gap: 10px;
-}
-
-.flex-item {
-  flex: 1;
-}
-
-/* --- Botões Específicos do Formulário --- */
-.prazo-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.prazo-btn {
-  flex: 1;
-  padding: 8px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 2px 2px 5px rgba(71, 35, 63, 0.2);
-}
-
-.prazo-btn.selected {
-  background-color: #6b198b;
-  color: white;
-}
-
-.submit-btn {
-  width: 100%;
-  margin-top: 24px;
-  background-color: #f2ff43;
-  /* Amarelo */
-  color: #000000;
-  /* Preto */
-  font-weight: bold;
-  border: none;
-  padding: 16px;
-  font-size: 16px;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  box-shadow: 2px 2px 5px rgba(71, 35, 63, 0.2);
-}
-
-.submit-btn:hover {
-  background-color: #b1bd0e;
-  /* Amarelo mais escuro */
-}
-
-.save-btn {
-  width: 100%;
-  margin-top: 10px;
-  background-color: #1976d2;
-  /* Azul */
-  color: white;
-  font-weight: bold;
-  border: none;
-  padding: 16px;
-  font-size: 16px;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  box-shadow: 2px 2px 5px rgba(71, 35, 63, 0.2);
-}
-
-.save-btn:hover {
-  background-color: #1565c0;
-  /* Azul mais escuro */
 }
 
 .back-btn {
@@ -280,44 +206,23 @@ textarea:hover {
   background-color: #5a6268;
 }
 
-/* --- Botão de Instalação PWA --- */
-.install-btn {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background-color: #6d196d;
+.submit-btn {
+  width: 100%;
+  margin-top: 24px;
+  background-color: #f2ff43;
+  color: #000000;
+  font-weight: bold;
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 14px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10001;
-  /* Acima do overlay do modal */
-  transition: transform 0.2s ease-in-out;
+  transition: background-color 0.3s;
+  box-shadow: 2px 2px 5px rgba(71, 35, 63, 0.2);
 }
 
-.install-btn:hover {
-  transform: scale(1.1);
-}
-
-.install-btn svg {
-  width: 24px;
-  height: 24px;
-  /* A cor é definida pelo atributo 'fill' no próprio SVG, mas podemos garantir aqui se necessário. */
-}
-
-
-/* --- Elementos Ocultos e Legado --- */
-/* Estes elementos foram escondidos como parte da refatoração para simplificar a UI */
-#retorno,
-#Caixa1,
-#Caixa2,
-#Caixa3 {
-  display: none;
+.submit-btn:hover {
+  background-color: #b1bd0e;
 }
 
 .footer {
@@ -345,7 +250,7 @@ textarea:hover {
   background-color: white;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   text-align: center;
   width: 90%;
   max-width: 400px;
@@ -379,63 +284,15 @@ textarea:hover {
   background-color: #3b1447;
 }
 
-/* --- Media Queries para Responsividade --- */
-@media (max-width: 600px) {
-  .flex-row {
-    flex-direction: column;
-  }
-
-  .form-container {
-    width: 100%;
-
-    box-sizing: border-box;
-  }
-
-  .selection-buttons {
-    flex-direction: column;
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-  }
-
-  .selection-buttons button {
-    width: 100%;
-  }
-
-  label {
-    font-size: 12px;
-  }
-
-  input,
-  select,
-  textarea {
-    font-size: 10px;
-    padding: 12px;
-  }
-
-  #app {
-    width: 100%;
-
-  }
-
-
-
-
-}
-
 /* --- Estilos do Modal de Erro --- */
 .error-modal-content {
   background-color: #1c1c1c;
-  /* Fundo preto */
   color: #ffffff;
-  /* Texto branco */
   border-left: 5px solid #ff4343;
-  /* Borda vermelha para indicar erro */
 }
 
 .error-modal-content h2 {
   color: #ffffff;
-  /* Título branco */
 }
 
 #error-modal-list {
@@ -453,11 +310,32 @@ textarea:hover {
 
 #error-modal-close-btn {
   background-color: #ff4343;
-  /* Botão vermelho */
   color: white;
 }
 
 #error-modal-close-btn:hover {
   background-color: #d92b2b;
-  /* Vermelho mais escuro no hover */
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 600px) {
+  .selection-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .selection-buttons button {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #app {
+    padding-top: 20px;
+  }
 }
