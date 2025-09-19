@@ -3,7 +3,7 @@
   "short_name": "Carimbo",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#3b1447",
+  "background_color": "#e5ddd5",
   "theme_color": "#3b1447",
   "description": "Aplicativo para gerar carimbos de ocorrências de reparo e instalação.",
   "icons": [

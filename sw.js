@@ -1,12 +1,13 @@
-const CACHE_NAME = 'gerador-carimbo-cache-v2'; // Versão do cache atualizada
+const CACHE_NAME = 'gerador-carimbo-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
-  '/manifest.json',
   '/images/icons/icon-192x192.png',
-  '/images/icons/icon-512x512.png'
+  '/images/icons/icon-512x512.png',
+  '/images/icons/favicon.ico',
+  '/images/icons/install.svg'
 ];
 
 // Evento de Instalação: Abre o cache e adiciona os arquivos principais.
@@ -15,6 +16,8 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Cache aberto');
+        // Adiciona todos os URLs definidos ao cache.
+        // Se qualquer um falhar, a instalação do service worker falha.
         return cache.addAll(urlsToCache);
       })
   );
@@ -28,6 +31,7 @@ self.addEventListener('activate', event => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
+            // Se o cache não estiver na lista de permissões, delete-o.
             return caches.delete(cacheName);
           }
         })
