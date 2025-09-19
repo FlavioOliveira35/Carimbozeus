@@ -7,7 +7,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
+  min-height: 100vh;
   max-width: 100%;
 
 }
@@ -17,6 +17,7 @@ body {
   /* O container principal do app é oculto até um formulário ser selecionado */
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 
 }
 
